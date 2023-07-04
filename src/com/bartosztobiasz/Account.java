@@ -1,10 +1,11 @@
 package com.bartosztobiasz;
 
+import java.io.IOException;
+
 public class Account {
-    public void deposit(float value) {
-        // defensive programming -> coding in a defensive manner
+    public void deposit(float value) throws IOException {
         if (value <= 0) {
-            throw new IllegalArgumentException(); // unchecked exception
+            throw new IOException(); // checked exception
         }
     }
 }
