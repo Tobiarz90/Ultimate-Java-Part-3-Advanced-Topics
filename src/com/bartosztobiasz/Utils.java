@@ -2,8 +2,8 @@ package com.bartosztobiasz;
 
 // non-generic class
 public class Utils {
-    // non-generic method
-    public static int max(int first, int second) {
-        return (first > second) ? first : second;
+    // generic method
+    public static <T extends Comparable<T>> T max(T first, T second) {
+        return first.compareTo(second) > 0 ? first : second;
     }
 }
