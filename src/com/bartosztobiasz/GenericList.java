@@ -4,7 +4,7 @@ package com.bartosztobiasz;
 Applying constrains/restrictions to generic class:
 <T extends Class/Interface & Class/Interface & ...>
  */
-public class GenericList<T extends Number> {
+public class GenericList<T extends Comparable> {
     private final T[] items = (T[]) new Object[10];
     private int count;
 
