@@ -6,7 +6,8 @@ public class ExceptionsDemo {
         try {
             account.withdraw(10);
         } catch (AccountException e) {
-            e.printStackTrace();
+            Throwable cause = e.getCause();
+            System.out.println(cause.getMessage());
         }
     }
 }
