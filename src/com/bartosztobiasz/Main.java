@@ -2,7 +2,10 @@ package com.bartosztobiasz;
 
 public class Main {
     public static void main(String[] args) {
-        var max = Utils.max(1, 5);
+        var max = Utils.max(
+                new User(10),
+                new User(3)
+        );
         System.out.println(max);
     }
 }
