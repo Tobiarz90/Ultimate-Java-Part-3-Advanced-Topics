@@ -11,9 +11,14 @@ public class Account {
         }
     }
 
-    public void withdraw(float value) throws InsufficientFundsException {
+    public void withdraw(float value) throws AccountException {
         if (value > balance) {
-            throw new InsufficientFundsException();
+            var fundsException = new InsufficientFundsException(); // przyczyna
+            var accountException = new AccountException(); // wyjątek ogólny
+
+            // inicjalizacja przyczyny wystąpienia wyjątku ogólnego
+            accountException.initCause(fundsException);
+            throw accountException;
         }
     }
 }
