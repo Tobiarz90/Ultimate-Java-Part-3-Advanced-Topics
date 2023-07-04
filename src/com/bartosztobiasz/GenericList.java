@@ -1,10 +1,11 @@
 package com.bartosztobiasz;
 
-/*
-Applying constrains/restrictions to generic class:
-<T extends Class/Interface & Class/Interface & ...>
- */
-public class GenericList<T extends Comparable> {
+public class GenericList<T extends Number> {
+
+    /*
+    'T' zostanie przekonwertowane przez kompilator Javy do klasy 'Object'
+    lub innej klasy wskazanej po słowie kluczowym 'extends' (np. 'Number').
+     */
     private final T[] items = (T[]) new Object[10];
     private int count;
 
