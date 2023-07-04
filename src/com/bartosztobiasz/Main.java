@@ -2,12 +2,11 @@ package com.bartosztobiasz;
 
 public class Main {
     public static void main(String[] args) {
-        var list = new GenericList<Integer>();
-        list.add(1);
-        int number = list.get(0);
+//        GenericList<Integer> numbers = new GenericList<Integer>();
+        GenericList<Integer> numbers = new GenericList<>();
 
-        var userList = new GenericList<User>();
-        userList.add(new User());
-        User user = userList.get(0); // no explicit casting -> benefit of generics
+        numbers.add(1); // boxing process:
+        // primitive value -> Java compiler wraps the value -> instance of an Integer class (box)
+        int number = numbers.get(0); // unboxing process
     }
 }
