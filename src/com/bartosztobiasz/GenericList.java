@@ -1,6 +1,10 @@
 package com.bartosztobiasz;
 
-public class GenericList<T> {
+/*
+Applying constrains/restrictions to generic class:
+<T extends Class/Interface & Class/Interface & ...>
+ */
+public class GenericList<T extends Number> {
     private final T[] items = (T[]) new Object[10];
     private int count;
 
