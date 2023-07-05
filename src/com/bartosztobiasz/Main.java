@@ -2,17 +2,17 @@ package com.bartosztobiasz;
 
 public class Main {
     public static void main(String[] args) {
-        var instructors = new GenericList<Instructor>();
-        instructors.add(new Instructor(10, "name1"));
-        instructors.add(new Instructor(20, "name2"));
-        instructors.add(new Instructor(30, "name3"));
+        var users = new GenericList<User>();
+        users.add(new User(10));
+        users.add(new User(20));
+        users.add(new User(30));
         /*
-        (GenericList<? extends User>):
+        (GenericList<? super User>):
             (GenericList<User>)
             or
-            (GenericList<derivative of User>):
-                (GenericList<Instructor>)
+            (GenericList<base classes of User>):
+                (GenericList<Object>)
          */
-        Utils.printUsers(instructors);
+        Utils.printUsers(users);
     }
 }
