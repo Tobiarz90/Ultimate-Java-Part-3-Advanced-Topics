@@ -1,7 +1,7 @@
 package com.bartosztobiasz;
 
 public class GenericList<T> {
-    private final T[] items = (T[]) new Object[10];
+    public final T[] items = (T[]) new Object[10];
     private int count;
 
     public void add(T item) {

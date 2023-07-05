@@ -2,17 +2,14 @@ package com.bartosztobiasz;
 
 public class Main {
     public static void main(String[] args) {
-        var users = new GenericList<User>();
-        users.add(new User(10));
-        users.add(new User(20));
-        users.add(new User(30));
-        /*
-        (GenericList<? super User>):
-            (GenericList<User>)
-            or
-            (GenericList<base classes of User>):
-                (GenericList<Object>)
-         */
-        Utils.printUsers(users);
+        var list = new GenericList<String>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+
+        // `list.items` -> the internal implementation of GenericList class is exposed to the outside
+        for (var item : list.items) {
+            System.out.println(item);
+        }
     }
 }
