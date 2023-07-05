@@ -12,6 +12,10 @@ public class Main {
         integers.add(1);
         integers.add(2);
         integers.add(3);
-        Utils.printUsers(integers); // It doesn't make sense to pass anything here.
+        /*
+        How to forbid passing any GenericList's type?
+        bounded wildcard (either an upper or a lower inheritance constraint)
+         */
+        Utils.printUsers(integers);
     }
 }
