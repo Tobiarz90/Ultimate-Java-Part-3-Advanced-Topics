@@ -6,17 +6,12 @@ public class Main {
         instructors.add(new Instructor(10, "name1"));
         instructors.add(new Instructor(20, "name2"));
         instructors.add(new Instructor(30, "name3"));
+        Utils.printUsers(instructors); // (GenericList<?>)
 
-        GenericList<User> users = new GenericList<>();
-        /*
-        Poor solution:
-        iterate over instructors list and add them to users list
-         */
-        for (int i = 0; i < 10; i++) {
-            Instructor instructor = instructors.get(i);
-            users.add(instructor);
-        }
-
-        Utils.printUsers(users); // (GenericList<User>)
+        GenericList<Integer> integers = new GenericList<>();
+        integers.add(1);
+        integers.add(2);
+        integers.add(3);
+        Utils.printUsers(integers); // It doesn't make sense to pass anything here.
     }
 }
