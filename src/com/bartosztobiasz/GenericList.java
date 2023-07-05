@@ -1,7 +1,9 @@
 package com.bartosztobiasz;
 
-public class GenericList<T> {
-    public final T[] items = (T[]) new Object[10];
+import java.util.Iterator;
+
+public class GenericList<T> implements Iterable<T> {
+    public T[] items = (T[]) new Object[10];
     private int count;
 
     public void add(T item) {
@@ -10,5 +12,10 @@ public class GenericList<T> {
 
     public T get(int index) {
         return items[index];
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return null;
     }
 }
