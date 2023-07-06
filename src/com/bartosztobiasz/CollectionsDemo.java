@@ -1,42 +1,32 @@
 package com.bartosztobiasz;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 public class CollectionsDemo {
     public static void show() {
-        Collection<String> collection = new ArrayList<>();
+        List<String> list = new ArrayList<>();
 
-        Collections.addAll(collection, "a", "b", "c");
-        collection.add("d");
+        Collections.addAll(list, "a", "b", "c");
+        list.add(0, "!");
+        System.out.println(list);
 
-        System.out.println(collection.size());
+        System.out.println(list.get(0));
 
-        Object[] objectArray = collection.toArray();
+        list.set(0, "a+");
+        System.out.println(list);
 
-        // `String[0]` provides enough capacity for a collection of any size.
-        String[] stringArray = collection.toArray(new String[0]);
+        list.remove(0);
+        System.out.println(list);
 
-        // interface Collection<E> extends Iterable<E>
-        for (var item : collection) {
-            System.out.println(item);
-        }
+        System.out.println(list.indexOf("a"));
+        System.out.println(list.indexOf("a+"));
 
-        // programing against interfaces -> use `Collection<String>` instead of `var`
-        Collection<String> other = new ArrayList<>();
-        // addAll(Collection<String> or any type that extends Collection<String>)
-        other.addAll(collection); // (wildcard)
+        list.add("a");
+        System.out.println(list);
+        System.out.println(list.lastIndexOf("a"));
 
-        // comparing collections based on their content
-        System.out.println(collection.equals(other));
-
-        collection.remove("a");
-        System.out.println(collection.contains("a"));
-
-        System.out.println(collection);
-
-        collection.clear();
-        System.out.println(collection.isEmpty());
+        System.out.println(list.subList(0, 2)); // 2nd arg is exclusive
     }
 }
