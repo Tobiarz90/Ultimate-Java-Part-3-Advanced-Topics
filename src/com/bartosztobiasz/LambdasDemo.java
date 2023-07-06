@@ -2,11 +2,9 @@ package com.bartosztobiasz;
 
 public class LambdasDemo {
     public static void show() {
-        // single parameter -> remove brackets (parenthesis)
-        // lambda signature: methodName(param -> { function body })
-        greet(message -> {
-            System.out.println(message);
-        });
+        // lambda signature: methodName(param -> function body)
+        // one line of a function body -> remove brackets (curly braces/brackets)
+        greet(message -> System.out.println(message)); // ang. concise - pol. zwięzły, krótki, treściwy
     }
 
     public static void greet(Printer printer) {
