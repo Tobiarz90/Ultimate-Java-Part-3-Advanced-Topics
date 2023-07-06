@@ -1,22 +1,44 @@
 package com.bartosztobiasz;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MapDemo {
     public static void show() {
-        List<Customer> customers = new ArrayList<>();
+        Customer customer1 = new Customer("a", "e1");
+        Customer customer2 = new Customer("b", "e2");
 
-        // Algorithm for finding a `Customer` with a particular email
-        for (Customer customer : customers) {
-            if (customer.getEmail().equals("e1")) {
-                System.out.println("Found!");
-            }
+        HashMap<String, Customer> map = new HashMap<>(); // maps a key to a value
+
+        map.put(customer1.getEmail(), customer1);
+        map.put(customer2.getEmail(), customer2);
+        System.out.println(map);
+
+        Customer customer = map.get("e1"); // the cost of finding the Object in a HashMap is very small, and it's constant
+        System.out.println(customer);
+
+        Customer unknown = new Customer("Unknown", "");
+        Customer customer_ = map.getOrDefault("e10", unknown);
+        System.out.println(customer_);
+
+        boolean exists = map.containsKey("e10");
+        System.out.println(exists);
+
+        map.replace("e1", new Customer("a++", "e1"));
+        System.out.println(map);
+
+        for (String key : map.keySet()) {
+            System.out.println(key);
         }
 
-        /*
-        When calculating the cost of an algorithm, use The Big O notation - `O(n)`.
-        `n` -> the number of customers in the list.
-         */
+        for (Customer value : map.values()) {
+            System.out.println(value);
+        }
+
+        for (Map.Entry<String, Customer> entry : map.entrySet()) {
+            System.out.println(entry);
+            System.out.println(entry.getKey());
+            System.out.println(entry.getValue());
+        }
     }
 }
