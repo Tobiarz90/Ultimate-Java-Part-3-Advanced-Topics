@@ -2,13 +2,9 @@ package com.bartosztobiasz;
 
 public class LambdasDemo {
     public static void show() {
-        // Anonymous Inner Class
-        greet(new Printer() {
-            @Override
-            public void print(String message) {
-                // this - represents a current instance of the anonymous inner class -> new Printer()
-                System.out.println(message);
-            }
+        // lambda signature: methodName((type param1, type param2) -> { function body })
+        greet((String message) -> {
+            System.out.println(message);
         });
     }
 
