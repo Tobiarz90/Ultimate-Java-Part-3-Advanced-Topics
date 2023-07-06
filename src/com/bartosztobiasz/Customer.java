@@ -14,6 +14,10 @@ public class Customer implements Comparable<Customer> {
         return name.compareTo(other.name);
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     @Override
     public String toString() {
         return name;
