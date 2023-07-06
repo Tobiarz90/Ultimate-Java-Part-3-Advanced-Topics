@@ -2,9 +2,9 @@ package com.bartosztobiasz;
 
 public class LambdasDemo {
     public static void show() {
-        // lambda expression will be checked against the signature of a method of a functional interface
-        // lambda signature: methodName((param1, param2) -> { function body })
-        greet((message) -> { // remove type of parameters
+        // single parameter -> remove brackets (parenthesis)
+        // lambda signature: methodName(param -> { function body })
+        greet(message -> {
             System.out.println(message);
         });
     }
