@@ -1,5 +1,6 @@
 package com.bartosztobiasz;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -17,7 +18,11 @@ public class StreamsDemo {
                 List.of(4, 5, 6)
         );
 
-        // print every list
-        stream.forEach(System.out::println);
+        // print every item of every list
+        stream
+                // flatten: from `Stream<List<Integer>>` to `Stream<Integer>`
+//                .flatMap(list -> list.stream()) // make stream out of every list
+                .flatMap(Collection::stream)
+                .forEach(System.out::println);
     }
 }
