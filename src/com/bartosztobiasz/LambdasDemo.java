@@ -11,19 +11,18 @@ public class LambdasDemo {
         Function<String, String> addBraces = str -> "{" + str + "}";
 
         // Declarative Programming
-        // composing functions
-        String result = replaceColon
-                .andThen(addBraces)
+        // composing functions in reverse order
+        String result = addBraces
+                .compose(replaceColon)
                 .apply("key:value");
         /*
-        from docs of andThen(Function):
-        return (T t) -> after.apply(apply(t));
-        return ("key:value") -> after.apply(apply("key:value"));
-        return ("key:value") -> after.apply(replaceColon.apply("key:value"));
-        return ("key:value") -> after.apply("key=value");
+        from docs of compose(Function):
+        return (V v) -> apply(before.apply(v));
+        return ("key:value") -> apply(replaceColon.apply("key:value"));
+        return ("key:value") -> apply("key=value");
         return ("key:value") -> addBraces.apply("key=value");
         return ("key:value") -> "{key=value}";
-        result "{key=value}"
+        result = "{key=value}";
          */
 
         System.out.println(result);
