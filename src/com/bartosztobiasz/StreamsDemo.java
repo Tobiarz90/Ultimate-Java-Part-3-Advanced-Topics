@@ -5,15 +5,16 @@ import java.util.List;
 public class StreamsDemo {
     public static void show() {
         List<Movie> movies = List.of(
-                new Movie("b", 30),
                 new Movie("a", 10),
-                new Movie("a", 10),
+                new Movie("b", 20),
                 new Movie("c", 20)
         );
 
         movies.stream()
-                .map(Movie::getLikes)
-                .distinct() // get unique items
+                .filter(movie -> movie.getLikes() > 10)
+                .peek(movie -> System.out.println("filtered: " + movie.getTitle()))
+                .map(Movie::getTitle)
+                .peek(title -> System.out.println("mapped: " + title))
                 .forEach(System.out::println);
     }
 }
