@@ -1,26 +1,19 @@
 package com.bartosztobiasz;
 
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class LambdasDemo {
     public static void show() {
-        List<String> list = List.of("a", "b", "c");
+        // lambda signature: methodName(() -> { return something; })
+        // no parameters -> empty brackets (parenthesis)
+//        Supplier<Double> getRandom = () -> { return Math.random(); };
 
-        Consumer<String> print = System.out::println;
-        Consumer<String> printUpperCase = item -> System.out.println(item.toUpperCase());
+//        Supplier<Double> getRandom = () -> Math.random();
 
-        // Chaining Consumers
-        /*
-        From docs of andThen(Consumer):
-        (T t) -> { accept(t); after.accept(t); }
+        Supplier<Double> getRandom = Math::random;
 
-        1. this.accept(t);
-        2. after.accept(t);
-
-        this: `print`
-        after: `printUpperCase`
-         */
-        list.forEach(print.andThen(printUpperCase));
+        // lazy evaluation
+        Double random = getRandom.get(); // this function is not executed until we explicitly call it
+        System.out.println(random);
     }
 }
