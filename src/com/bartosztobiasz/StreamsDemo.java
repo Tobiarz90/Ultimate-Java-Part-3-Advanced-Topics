@@ -1,6 +1,7 @@
 package com.bartosztobiasz;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class StreamsDemo {
     public static void show() {
@@ -10,13 +11,13 @@ public class StreamsDemo {
                 new Movie("c", 20)
         );
 
-        // Mapping
-        movies.stream()
-                .map(Movie::getTitle) // pipe #1
-                .forEach(System.out::println); // pipe #2
+        // stream of two lists
+        Stream<List<Integer>> stream = Stream.of(
+                List.of(1, 2, 3),
+                List.of(4, 5, 6)
+        );
 
-        movies.stream()
-                .mapToInt(Movie::getLikes) // primitive variation of .map()
-                .forEach(System.out::println);
+        // print every list
+        stream.forEach(System.out::println);
     }
 }
