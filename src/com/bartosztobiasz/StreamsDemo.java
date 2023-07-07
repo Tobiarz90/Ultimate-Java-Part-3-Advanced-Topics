@@ -10,9 +10,12 @@ public class StreamsDemo {
                 new Movie("c", 20)
         );
 
-        // limit(n)
+        // data pagination (pol. dzielenie na strony)
+        int page = 3;
+        int pageSize = 10;
         movies.stream()
-                .limit(2)
+                .skip((page - 1) * pageSize)
+                .limit(pageSize)
                 .map(Movie::getTitle)
                 .forEach(System.out::println);
     }
