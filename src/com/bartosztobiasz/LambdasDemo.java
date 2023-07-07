@@ -1,16 +1,14 @@
 package com.bartosztobiasz;
 
-import java.util.function.BinaryOperator;
-import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 public class LambdasDemo {
     public static void show() {
-        // a, b -> a + b -> square
+        // UnaryOperator<Integer> == Function<Integer, Integer>
+        UnaryOperator<Integer> square = a -> a * a;
+        UnaryOperator<Integer> increment = n -> n + 1;
 
-        BinaryOperator<Integer> add = (a, b) -> a + b;
-        Function<Integer, Integer> square = a -> a * a;
-
-        int result = add.andThen(square).apply(1, 2);
+        int result = increment.andThen(square).apply(1);
         System.out.println(result);
     }
 }
