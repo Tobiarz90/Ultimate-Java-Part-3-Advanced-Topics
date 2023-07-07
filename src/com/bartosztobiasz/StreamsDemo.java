@@ -10,13 +10,10 @@ public class StreamsDemo {
                 new Movie("c", 20)
         );
 
-        // Imperative Programming
-        int count = 0;
-        for (Movie movie : movies) {
-            if (movie.getLikes() > 10) {
-                count++;
-            }
-        }
+        // Declarative (Functional) Programming
+        long count = movies.stream()
+                .filter(movie -> movie.getLikes() > 10)
+                .count();
         System.out.println(count);
     }
 }
