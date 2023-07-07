@@ -5,39 +5,22 @@ import java.util.function.Consumer;
 
 public class LambdasDemo {
     public static void show() {
-        List<Integer> list = List.of(1, 2, 3);
+        List<String> list = List.of("a", "b", "c");
 
-        // Imperative Programming (for, if/else, switch/case) - programming style/paradigm
-        // -> implementing logic using instructions; HOW it should be done?
-        for (Integer item : list) {
-            System.out.println(item);
-        }
+        Consumer<String> print = System.out::println;
+        Consumer<String> printUpperCase = item -> System.out.println(item.toUpperCase());
 
-        // Declarative Programming - programming style/paradigm
-        // -> WHAT should be done?
+        // Chaining Consumers
+        /*
+        From docs of andThen(Consumer):
+        (T t) -> { accept(t); after.accept(t); }
 
-        // #1 - anonymous inner class
-        list.forEach(new Consumer<Integer>() {
-            @Override
-            public void accept(Integer item) {
-                System.out.println(item);
-            }
-        });
+        1. this.accept(t);
+        2. after.accept(t);
 
-        // #2 - lambda expression
-        list.forEach((Integer item) -> {
-            System.out.println(item);
-        });
-
-        // #3 - no type specified
-        list.forEach((item) -> {
-            System.out.println(item);
-        });
-
-        // #4 - single argument and one-line body
-        list.forEach(item -> System.out.println(item));
-
-        // #5 - method reference
-        list.forEach(System.out::println);
+        this: `print`
+        after: `printUpperCase`
+         */
+        list.forEach(print.andThen(printUpperCase));
     }
 }
