@@ -1,8 +1,7 @@
 package com.bartosztobiasz;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.function.Predicate;
 
 public class StreamsDemo {
     public static void show() {
@@ -12,17 +11,10 @@ public class StreamsDemo {
                 new Movie("c", 20)
         );
 
-        // stream of two lists
-        Stream<List<Integer>> stream = Stream.of(
-                List.of(1, 2, 3),
-                List.of(4, 5, 6)
-        );
-
-        // print every item of every list
-        stream
-                // flatten: from `Stream<List<Integer>>` to `Stream<Integer>`
-//                .flatMap(list -> list.stream()) // make stream out of every list
-                .flatMap(Collection::stream)
+        Predicate<Movie> isPopular = movie -> movie.getLikes() > 10;
+        movies.stream()
+                .filter(isPopular)
+                .map(Movie::getTitle)
                 .forEach(System.out::println);
     }
 }
