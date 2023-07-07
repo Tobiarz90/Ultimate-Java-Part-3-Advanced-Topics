@@ -1,12 +1,16 @@
 package com.bartosztobiasz;
 
-import java.util.function.IntBinaryOperator;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
 
 public class LambdasDemo {
     public static void show() {
-        // IntBinaryOperator = BinaryOperator<Integer> == BiFunction<Integer, Integer, Integer>
-        IntBinaryOperator add = (a, b) -> a + b;
-        int result = add.applyAsInt(1, 2);
+        // a, b -> a + b -> square
+
+        BinaryOperator<Integer> add = (a, b) -> a + b;
+        Function<Integer, Integer> square = a -> a * a;
+
+        int result = add.andThen(square).apply(1, 2);
         System.out.println(result);
     }
 }
