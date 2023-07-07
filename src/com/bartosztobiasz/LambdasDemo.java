@@ -2,12 +2,13 @@ package com.bartosztobiasz;
 
 public class LambdasDemo {
     public static void show() {
-        // passing static methods as a Method Reference
-        greet(message -> printStatic(message));
-        greet(LambdasDemo::printStatic); // ClassName::methodName
+        // passing instance methods as a Method Reference
+        var demo = new LambdasDemo();
+        greet(message -> demo.printInstance(message));
+        greet(demo::printInstance); // ObjectName::methodName
     }
 
-    public static void printStatic(String message) {
+    public void printInstance(String message) {
         System.out.println(message);
     }
 
