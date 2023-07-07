@@ -1,19 +1,13 @@
 package com.bartosztobiasz;
 
-import java.util.function.Supplier;
+import java.util.function.Function;
 
 public class LambdasDemo {
     public static void show() {
-        // lambda signature: methodName(() -> { return something; })
-        // no parameters -> empty brackets (parenthesis)
-//        Supplier<Double> getRandom = () -> { return Math.random(); };
+//        Function<String, Integer> map = str -> str.length();
+        Function<String, Integer> map = String::length;
 
-//        Supplier<Double> getRandom = () -> Math.random();
-
-        Supplier<Double> getRandom = Math::random;
-
-        // lazy evaluation
-        Double random = getRandom.get(); // this function is not executed until we explicitly call it
-        System.out.println(random);
+        int length = map.apply("Sky");
+        System.out.println(length);
     }
 }
