@@ -1,19 +1,15 @@
 package com.bartosztobiasz;
 
-import java.util.function.Predicate;
+import java.util.function.BinaryOperator;
 
 public class LambdasDemo {
     public static void show() {
-        // Combining Predicates
-        Predicate<String> hasLeftBrace = str -> str.startsWith("{");
-        Predicate<String> hasRightBrace = str -> str.endsWith("}");
+        var x = 1 + 2; // + (addition operator) == BinaryOperator
+        // singleResult = operand1 BinaryOperator operand2
 
-        Predicate<String> hasBraces =
-                hasLeftBrace.and(hasRightBrace); // &&
-        hasLeftBrace.or(hasRightBrace); // ||
-
-        hasBraces.negate(); // !
-
-        System.out.println(hasBraces.test("{key:value}"));
+        // BinaryOperator<Integer> == BiFunction<Integer, Integer, Integer>
+        BinaryOperator<Integer> add = (a, b) -> a + b;
+        int result = add.apply(1, 2);
+        System.out.println(result);
     }
 }
