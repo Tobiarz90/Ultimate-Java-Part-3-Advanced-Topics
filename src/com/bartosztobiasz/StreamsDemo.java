@@ -1,6 +1,7 @@
 package com.bartosztobiasz;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StreamsDemo {
     public static void show() {
@@ -10,11 +11,10 @@ public class StreamsDemo {
                 new Movie("c", 30)
         );
 
-        // get total likes from all movies
-
-        int sumOfLikes = movies.stream()
-                .map(Movie::getLikes)
-                .reduce(0, Integer::sum); // .reduce(initialValue, BinaryOperator)
-        System.out.println(sumOfLikes);
+        var collection = movies.stream()
+                .filter(movie -> movie.getLikes() > 10)
+//                .collect(Collectors.toSet())
+                .collect(Collectors.toList());
+        System.out.println(collection);
     }
 }
