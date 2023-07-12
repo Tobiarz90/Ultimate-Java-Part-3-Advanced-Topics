@@ -1,6 +1,5 @@
 package com.bartosztobiasz;
 
-import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,10 +11,11 @@ public class StreamsDemo {
                 new Movie("c", 30)
         );
 
-        // statistics about the values in a stream
-        IntSummaryStatistics statistics = movies.stream()
+        // concatenating names of movies using a collector
+        String string = movies.stream()
                 .filter(movie -> movie.getLikes() > 10)
-                .collect(Collectors.summarizingInt(Movie::getLikes));
-        System.out.println(statistics);
+                .map(Movie::getTitle)
+                .collect(Collectors.joining(", "));
+        System.out.println(string);
     }
 }
