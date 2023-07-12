@@ -7,14 +7,11 @@ public class StreamsDemo {
         List<Movie> movies = List.of(
                 new Movie("a", 10),
                 new Movie("b", 20),
-                new Movie("c", 20)
+                new Movie("c", 30)
         );
 
-        movies.stream()
-                .filter(movie -> movie.getLikes() > 10)
-                .peek(movie -> System.out.println("filtered: " + movie.getTitle()))
-                .map(Movie::getTitle)
-                .peek(title -> System.out.println("mapped: " + title))
-                .forEach(System.out::println);
+        long count = movies.stream()
+                .count();
+        System.out.println(count);
     }
 }
