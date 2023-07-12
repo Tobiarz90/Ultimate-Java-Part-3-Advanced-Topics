@@ -12,9 +12,11 @@ public class StreamsDemo {
                 new Movie("c", 30, Genre.ACTION)
         );
 
-        Map<Genre, Long> moviesByGenre = movies.stream()
+        Map<Genre, String> moviesByGenre = movies.stream()
                 .collect(Collectors.groupingBy(
-                        Movie::getGenre, Collectors.counting()));
+                        Movie::getGenre,
+                        Collectors.mapping(Movie::getTitle,
+                                Collectors.joining(", "))));
         System.out.println(moviesByGenre);
     }
 }
