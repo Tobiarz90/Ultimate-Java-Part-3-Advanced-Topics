@@ -10,9 +10,9 @@ public class StreamsDemo {
                 new Movie("c", 30)
         );
 
-        Movie firstMovie = movies.stream()
-                .findFirst()
+        Movie movie = movies.stream()
+                .findAny()
                 .get();
-        System.out.println(firstMovie);
+        System.out.println(movie);
     }
 }
