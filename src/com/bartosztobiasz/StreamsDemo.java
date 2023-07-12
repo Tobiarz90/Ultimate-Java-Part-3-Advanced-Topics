@@ -2,6 +2,7 @@ package com.bartosztobiasz;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class StreamsDemo {
@@ -12,8 +13,9 @@ public class StreamsDemo {
                 new Movie("c", 30, Genre.ACTION)
         );
 
-        Map<Genre, List<Movie>> moviesByGenre = movies.stream()
-                .collect(Collectors.groupingBy(Movie::getGenre));
+        Map<Genre, Set<Movie>> moviesByGenre = movies.stream()
+                .collect(Collectors.groupingBy(
+                        Movie::getGenre, Collectors.toSet()));
         System.out.println(moviesByGenre);
     }
 }
