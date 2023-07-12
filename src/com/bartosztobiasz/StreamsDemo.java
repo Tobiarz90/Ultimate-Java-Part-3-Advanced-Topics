@@ -1,5 +1,6 @@
 package com.bartosztobiasz;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class StreamsDemo {
@@ -10,9 +11,9 @@ public class StreamsDemo {
                 new Movie("c", 30)
         );
 
-        Movie movie = movies.stream()
-                .findAny()
+        Movie popularMovie = movies.stream()
+                .max(Comparator.comparing(Movie::getLikes))
                 .get();
-        System.out.println(movie);
+        System.out.println(popularMovie);
     }
 }
