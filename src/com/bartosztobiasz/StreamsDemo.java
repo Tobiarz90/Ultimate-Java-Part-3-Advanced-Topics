@@ -10,8 +10,8 @@ public class StreamsDemo {
                 new Movie("c", 30)
         );
 
-        long count = movies.stream()
-                .count();
-        System.out.println(count);
+        boolean anyMatch = movies.stream()
+                .anyMatch(movie -> movie.getLikes() > 20);
+        System.out.println(anyMatch);
     }
 }
