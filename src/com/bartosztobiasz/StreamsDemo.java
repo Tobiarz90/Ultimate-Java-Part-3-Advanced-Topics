@@ -10,8 +10,8 @@ public class StreamsDemo {
                 new Movie("c", 30)
         );
 
-        boolean allMatch = movies.stream()
-                .allMatch(movie -> movie.getLikes() > 10);
-        System.out.println(allMatch);
+        boolean noneMatch = movies.stream()
+                .noneMatch(movie -> movie.getLikes() > 20);
+        System.out.println(noneMatch);
     }
 }
