@@ -1,6 +1,7 @@
 package com.bartosztobiasz;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class StreamsDemo {
@@ -11,10 +12,11 @@ public class StreamsDemo {
                 new Movie("c", 30)
         );
 
-        var collection = movies.stream()
+        // key: title
+        // value: likes
+        Map<String, Integer> movieMap = movies.stream()
                 .filter(movie -> movie.getLikes() > 10)
-//                .collect(Collectors.toSet())
-                .collect(Collectors.toList());
-        System.out.println(collection);
+                .collect(Collectors.toMap(Movie::getTitle, Movie::getLikes));
+        System.out.println(movieMap);
     }
 }
