@@ -10,8 +10,9 @@ public class StreamsDemo {
                 new Movie("c", 30)
         );
 
-        boolean noneMatch = movies.stream()
-                .noneMatch(movie -> movie.getLikes() > 20);
-        System.out.println(noneMatch);
+        Movie firstMovie = movies.stream()
+                .findFirst()
+                .get();
+        System.out.println(firstMovie);
     }
 }
