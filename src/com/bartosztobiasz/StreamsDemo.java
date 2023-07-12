@@ -1,9 +1,7 @@
 package com.bartosztobiasz;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class StreamsDemo {
     public static void show() {
@@ -15,10 +13,14 @@ public class StreamsDemo {
 
         // key: title
         // value: Movie
-        Map<String, Movie> movieMap = movies.stream()
-                .filter(movie -> movie.getLikes() > 10)
-//                .collect(Collectors.toMap(Movie::getTitle, movie -> movie));
-                .collect(Collectors.toMap(Movie::getTitle, Function.identity()));
+
+        // imperative programming
+        HashMap<String, Movie> movieMap = new HashMap<>();
+        for (Movie movie : movies) {
+            if (movie.getLikes() > 10) {
+                movieMap.put(movie.getTitle(), movie);
+            }
+        }
         System.out.println(movieMap);
     }
 }
