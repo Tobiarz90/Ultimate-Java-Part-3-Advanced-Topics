@@ -2,6 +2,7 @@ package com.bartosztobiasz;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class StreamsDemo {
@@ -13,10 +14,11 @@ public class StreamsDemo {
         );
 
         // key: title
-        // value: likes
-        Map<String, Integer> movieMap = movies.stream()
+        // value: Movie
+        Map<String, Movie> movieMap = movies.stream()
                 .filter(movie -> movie.getLikes() > 10)
-                .collect(Collectors.toMap(Movie::getTitle, Movie::getLikes));
+//                .collect(Collectors.toMap(Movie::getTitle, movie -> movie));
+                .collect(Collectors.toMap(Movie::getTitle, Function.identity()));
         System.out.println(movieMap);
     }
 }
