@@ -3,10 +3,12 @@ package com.bartosztobiasz;
 public class Movie implements Comparable<Movie> {
     private final String title;
     private final int likes;
+    private final Genre genre;
 
-    public Movie(String title, int likes) {
+    public Movie(String title, int likes, Genre genre) {
         this.title = title;
         this.likes = likes;
+        this.genre = genre;
     }
 
     public int getLikes() {
@@ -28,5 +30,9 @@ public class Movie implements Comparable<Movie> {
                 "title='" + title + '\'' +
                 ", likes=" + likes +
                 '}';
+    }
+
+    public Genre getGenre() {
+        return genre;
     }
 }

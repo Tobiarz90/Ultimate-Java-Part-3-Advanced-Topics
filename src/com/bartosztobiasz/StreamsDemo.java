@@ -1,21 +1,19 @@
 package com.bartosztobiasz;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class StreamsDemo {
     public static void show() {
         List<Movie> movies = List.of(
-                new Movie("a", 10),
-                new Movie("b", 20),
-                new Movie("c", 30)
+                new Movie("a", 10, Genre.THRILLER),
+                new Movie("b", 20, Genre.ACTION),
+                new Movie("c", 30, Genre.ACTION)
         );
 
-        // concatenating names of movies using a collector
-        String string = movies.stream()
-                .filter(movie -> movie.getLikes() > 10)
-                .map(Movie::getTitle)
-                .collect(Collectors.joining(", "));
-        System.out.println(string);
+        Map<Genre, List<Movie>> moviesByGenre = movies.stream()
+                .collect(Collectors.groupingBy(Movie::getGenre));
+        System.out.println(moviesByGenre);
     }
 }
